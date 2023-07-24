@@ -11,7 +11,12 @@ import { Drawer as MUIDrawer,
     Divider,
     Button,
     CssBaseline, 
-    Box
+    Box,
+    Dialog,
+    DialogActions, 
+    DialogContent, 
+    DialogContentText, 
+    DialogTitle 
 } from "@mui/material";
 import MenuIcon from '@mui/icons-material/Menu';
 import { ChevronRight,ChevronLeft } from "@mui/icons-material";
@@ -19,6 +24,8 @@ import { useNavigate } from "react-router-dom";
 
 // Internal Imports
 import { theme } from '../../Theme/themes'
+import { DataTable } from '../DataTable/DataTable';
+import { HeroForm } from '../HeroForm';
 
 const drawerWidth = 240;
 
@@ -87,6 +94,8 @@ const myStyles = {
 export const Dashboard = () => {
     const navigate = useNavigate();
   const [open, setOpen] = useState(false);
+  const [dialogOpen, setDialogOpen] = useState(false);
+
 
   const handleDrawerOpen = () => {
     setOpen(true);
@@ -95,7 +104,14 @@ export const Dashboard = () => {
   const handleDrawerClose = () => {
     setOpen(false);
   };
+  
+  const handleDialogClickOpen = () => {
+    setDialogOpen(true);
+  }
 
+  const handleDialogClickClose = () => {
+    setDialogOpen(false);
+  }
   const itemsList = [
     {
       text: 'Home',
@@ -125,7 +141,18 @@ export const Dashboard = () => {
               <MenuIcon />
             </IconButton>
             <Typography variant="h6" noWrap> Dashboard</Typography>
-            <Button sx={ myStyles.toolbar_button }>Create New Comic</Button>
+            <Button onClick={ handleDialogClickOpen } sx={ myStyles.toolbar_button }>Create New Comic</Button>
+            <Dialog open={dialogOpen} onClose={handleDialogClickClose} aria-labelledby="form-dialog-title">
+          <DialogTitle id="form-dialog-title">Add New Comic</DialogTitle>
+          <DialogContent>
+            <DialogContentText>Choose your new Comic</DialogContentText>
+              <HeroForm />
+          </DialogContent>
+          <DialogActions>
+            <Button onClick = {handleDialogClickClose} color="primary">Cancel</Button>
+          </DialogActions>
+
+        </Dialog>
           </Toolbar>
         </AppBar>
         <MUIDrawer
@@ -157,7 +184,7 @@ export const Dashboard = () => {
           <Box sx={ myStyles.drawerHeader }/>
   
           <h1>Hello World Until Data Shows Up</h1>
-          {/* <DataTable /> We will add this shortly*/}
+          <DataTable />
          
         </Box>
       </Box>

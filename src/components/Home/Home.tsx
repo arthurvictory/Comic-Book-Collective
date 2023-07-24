@@ -6,11 +6,11 @@ import { Link } from 'react-router-dom';
 
 // Internal Imports
 import comic_image from '../../assets/images/comics.jpg'
+import { FormatColorText } from '@mui/icons-material';
 
 interface Props {
     title: string; 
 }
-
 
 
 const Root = styled('div')({
@@ -21,7 +21,8 @@ const Root = styled('div')({
 const NavBarContainer = styled('div')({
     display: 'flex',
     justifyContent: 'space-between',
-    alignItems: 'center'
+    alignItems: 'center',
+    backgroundColor: '#0306A6',
 })
 
 const Logo = styled('h1')({
@@ -29,7 +30,7 @@ const Logo = styled('h1')({
 })
 
 const LogoA = styled(Link)({
-    color: 'rgb(28, 24, 22)',
+    color: 'white',
     listSTyle: 'none',
     textTransform: 'uppercase',
     textDecoration: 'none'
@@ -45,7 +46,7 @@ const LogoNavigation = styled('ul')({
 const NavA = styled(Link)({
     display: 'block',
     padding: '1em',
-    color: 'black'
+    color: 'white'
 })
 
 const Main = styled('main')({
