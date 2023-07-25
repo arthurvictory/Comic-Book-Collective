@@ -183,7 +183,7 @@ export const Dashboard = () => {
         <Box sx={ myStyles.content } >
           <Box sx={ myStyles.drawerHeader }/>
   
-          <h1>Hello World Until Data Shows Up</h1>
+          <h1>Time to save the world!</h1>
           <DataTable />
          
         </Box>
